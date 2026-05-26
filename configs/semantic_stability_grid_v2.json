@@ -1,0 +1,79 @@
+{
+  "run_name": "semantic_stability_grid_v2",
+  "description": "Stable recipe v2 grid: recover semantic clean mean performance while keeping lower multi-seed variance.",
+  "seeds": [20260516, 20260517, 20260518],
+  "device": "cuda",
+  "base_config": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/semantic_comm_training.json",
+  "variants": ["clean"],
+  "recipes": [
+    {
+      "name": "lr2e4_clip05",
+      "run_name_template": "semantic_stability_v2_lr2e4_clip05_seed{seed}",
+      "overrides": {
+        "num_epochs": 100,
+        "learning_rate": 0.0002,
+        "batch_size": 24,
+        "early_stopping_patience": 25,
+        "early_stopping_min_delta": 0.0005,
+        "deterministic": true,
+        "cudnn_benchmark": false,
+        "gradient_clip_norm": 0.5,
+        "scheduler_patience": 8,
+        "scheduler_factor": 0.5
+      }
+    },
+    {
+      "name": "lr2e4_clip10",
+      "run_name_template": "semantic_stability_v2_lr2e4_clip10_seed{seed}",
+      "overrides": {
+        "num_epochs": 100,
+        "learning_rate": 0.0002,
+        "batch_size": 24,
+        "early_stopping_patience": 25,
+        "early_stopping_min_delta": 0.0005,
+        "deterministic": true,
+        "cudnn_benchmark": false,
+        "gradient_clip_norm": 1.0,
+        "scheduler_patience": 8,
+        "scheduler_factor": 0.5
+      }
+    },
+    {
+      "name": "lr2e4_clip20",
+      "run_name_template": "semantic_stability_v2_lr2e4_clip20_seed{seed}",
+      "overrides": {
+        "num_epochs": 100,
+        "learning_rate": 0.0002,
+        "batch_size": 24,
+        "early_stopping_patience": 25,
+        "early_stopping_min_delta": 0.0005,
+        "deterministic": true,
+        "cudnn_benchmark": false,
+        "gradient_clip_norm": 2.0,
+        "scheduler_patience": 8,
+        "scheduler_factor": 0.5
+      }
+    }
+  ],
+  "outputs": {
+    "generated_config_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/semantic_stability_grid_v2",
+    "report_prefix": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/reports/semantic_stability_grid_v2"
+  },
+  "references": [
+    {
+      "rows_csv": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/reports/multi_seed_reproducibility_v1_rows.csv",
+      "label": "original_recipe",
+      "model_filter": "semantic_clean"
+    },
+    {
+      "rows_csv": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/reports/semantic_stability_v1_rows.csv",
+      "label": "stable_v1_lr1e4_clip10",
+      "model_filter": "semantic_clean"
+    }
+  ],
+  "selection": {
+    "score": "test_iou_mean_minus_std",
+    "definition": "test_iou_mean - test_iou_std; prefers high mean and lower variance."
+  },
+  "skip_existing_completed_runs": true
+}

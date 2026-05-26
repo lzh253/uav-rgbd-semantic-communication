@@ -1,0 +1,27 @@
+{
+  "run_name": "multi_seed_reproducibility_v1",
+  "description": "Multi-seed reproducibility experiment for key baselines and the clean RGB-D semantic communication model.",
+  "seeds": [20260516, 20260517, 20260518],
+  "device": "cuda",
+  "baseline": {
+    "base_config": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/baseline_training_long.json",
+    "modes": ["rgb", "rgbd"],
+    "run_name_template": "multi_seed_reproducibility_v1_seed{seed}",
+    "num_epochs": 100,
+    "early_stopping_patience": 18,
+    "early_stopping_min_delta": 0.001
+  },
+  "semantic": {
+    "base_config": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/semantic_comm_training.json",
+    "variants": ["clean"],
+    "run_name_template": "multi_seed_reproducibility_v1_seed{seed}",
+    "num_epochs": 60,
+    "early_stopping_patience": 14,
+    "early_stopping_min_delta": 0.001
+  },
+  "outputs": {
+    "generated_config_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/multi_seed_reproducibility_v1",
+    "report_prefix": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/reports/multi_seed_reproducibility_v1"
+  },
+  "skip_existing_completed_runs": true
+}

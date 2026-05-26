@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: "Task-Oriented RGB-D Semantic Communication for UAV-to-UGV Traversability Mapping"
+message: "If you use this code package, please cite the associated manuscript when available."
+authors:
+  - family-names: Liu
+    given-names: Ziheng
+    orcid: "https://orcid.org/0009-0008-7899-1568"
+  - family-names: Li
+    given-names: Yao
+  - family-names: Jia
+    given-names: Yong
+  - family-names: Lin
+    given-names: Fanqiang
+repository-code: "https://github.com/lzh253/uav-rgbd-semantic-communication"
+date-released: "2026-05-25"

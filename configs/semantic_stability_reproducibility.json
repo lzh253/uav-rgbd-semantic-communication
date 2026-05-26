@@ -1,0 +1,30 @@
+{
+  "run_name": "semantic_stability_v1",
+  "description": "Stabilized multi-seed training recipe for the clean RGB-D semantic communication model.",
+  "seeds": [20260516, 20260517, 20260518],
+  "device": "cuda",
+  "base_config": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/semantic_comm_training.json",
+  "variants": ["clean"],
+  "run_name_template": "semantic_stability_v1_seed{seed}",
+  "config_overrides": {
+    "num_epochs": 100,
+    "learning_rate": 0.0001,
+    "batch_size": 24,
+    "early_stopping_patience": 25,
+    "early_stopping_min_delta": 0.0005,
+    "deterministic": true,
+    "cudnn_benchmark": false,
+    "gradient_clip_norm": 1.0,
+    "scheduler_patience": 8,
+    "scheduler_factor": 0.5
+  },
+  "outputs": {
+    "generated_config_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/semantic_stability_v1",
+    "report_prefix": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/reports/semantic_stability_v1"
+  },
+  "reference": {
+    "rows_csv": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/reports/multi_seed_reproducibility_v1_rows.csv",
+    "label": "semantic_clean_original_recipe"
+  },
+  "skip_existing_completed_runs": true
+}

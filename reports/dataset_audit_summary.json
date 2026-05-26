@@ -1,0 +1,429 @@
+{
+  "protocol_name": "aeroscapes_road_only_traversability_v1",
+  "dataset_root": "AeroScapes",
+  "passable_class_ids": [
+    10
+  ],
+  "non_passable_policy": "all_label_ids_except_passable_are_non_passable",
+  "class_0_note": "Label id 0 appears as black background/unlabeled in visualization. It is not treated as passable in this protocol.",
+  "num_records": 3269,
+  "split_metadata": {
+    "splits": {
+      "train": {
+        "num_images": 2356,
+        "num_groups": 90
+      },
+      "val": {
+        "num_images": 265,
+        "num_groups": 16
+      },
+      "test": {
+        "num_images": 648,
+        "num_groups": 35
+      }
+    },
+    "groups": {
+      "train": [
+        "000001",
+        "000002",
+        "000003",
+        "000004",
+        "000005",
+        "000101",
+        "000102",
+        "001101",
+        "002001",
+        "002101",
+        "035000",
+        "035001",
+        "038000",
+        "038001",
+        "038004",
+        "038006",
+        "038008",
+        "038009",
+        "038011",
+        "038012",
+        "038013",
+        "038014",
+        "038017",
+        "038018",
+        "038019",
+        "038020",
+        "038023",
+        "038024",
+        "038025",
+        "038028",
+        "038029",
+        "038030",
+        "040001",
+        "040002",
+        "040003",
+        "040004",
+        "040005",
+        "041000",
+        "041001",
+        "041002",
+        "041003",
+        "041004",
+        "041006",
+        "041008",
+        "041009",
+        "110500",
+        "115000",
+        "115001",
+        "115002",
+        "115003",
+        "115004",
+        "115005",
+        "115006",
+        "115007",
+        "116000",
+        "116001",
+        "116003",
+        "116005",
+        "116007",
+        "116100",
+        "116102",
+        "116200",
+        "116201",
+        "116202",
+        "200000",
+        "200001",
+        "200002",
+        "200003",
+        "213001",
+        "213003",
+        "310000",
+        "310004",
+        "310005",
+        "310006",
+        "310007",
+        "310008",
+        "310009",
+        "310010",
+        "310014",
+        "310015",
+        "310016",
+        "310017",
+        "310020",
+        "310022",
+        "310023",
+        "310102",
+        "311000",
+        "311001",
+        "315000",
+        "315002"
+      ],
+      "val": [
+        "005001",
+        "035002",
+        "038007",
+        "038010",
+        "038021",
+        "038022",
+        "038026",
+        "038027",
+        "040000",
+        "045002",
+        "115010",
+        "213000",
+        "310001",
+        "310012",
+        "310019",
+        "315005"
+      ],
+      "test": [
+        "002000",
+        "002002",
+        "002102",
+        "005000",
+        "038032",
+        "038034",
+        "038035",
+        "038036",
+        "038037",
+        "038040",
+        "038041",
+        "038042",
+        "038043",
+        "038046",
+        "038049",
+        "038051",
+        "038057",
+        "041005",
+        "041007",
+        "045001",
+        "115008",
+        "116002",
+        "116004",
+        "116006",
+        "116101",
+        "200004",
+        "213002",
+        "213004",
+        "310018",
+        "310021",
+        "311002",
+        "315001",
+        "315003",
+        "315004",
+        "315006"
+      ]
+    }
+  },
+  "missing_files": {
+    "rgb": {
+      "count": 0,
+      "first_20": []
+    },
+    "label": {
+      "count": 0,
+      "first_20": []
+    },
+    "label_visualization": {
+      "count": 0,
+      "first_20": []
+    },
+    "depth_preview": {
+      "count": 0,
+      "first_20": []
+    }
+  },
+  "passable_by_split": {
+    "train": {
+      "num_images": 2356,
+      "passable_pixels": 707370431,
+      "total_pixels": 2171289600,
+      "passable_ratio": 0.3257835486339547
+    },
+    "val": {
+      "num_images": 265,
+      "passable_pixels": 56280994,
+      "total_pixels": 244224000,
+      "passable_ratio": 0.23044825242400419
+    },
+    "test": {
+      "num_images": 648,
+      "passable_pixels": 118056921,
+      "total_pixels": 597196800,
+      "passable_ratio": 0.19768511988007972
+    }
+  },
+  "label_distribution": {
+    "train": {
+      "0": {
+        "pixels": 497702428,
+        "images_with_label": 2356
+      },
+      "1": {
+        "pixels": 7990321,
+        "images_with_label": 2005
+      },
+      "2": {
+        "pixels": 1478921,
+        "images_with_label": 1041
+      },
+      "3": {
+        "pixels": 8079582,
+        "images_with_label": 731
+      },
+      "4": {
+        "pixels": 249080,
+        "images_with_label": 124
+      },
+      "5": {
+        "pixels": 540173,
+        "images_with_label": 44
+      },
+      "6": {
+        "pixels": 1562407,
+        "images_with_label": 60
+      },
+      "7": {
+        "pixels": 13399177,
+        "images_with_label": 1572
+      },
+      "8": {
+        "pixels": 73702791,
+        "images_with_label": 1297
+      },
+      "9": {
+        "pixels": 764162513,
+        "images_with_label": 2158
+      },
+      "10": {
+        "pixels": 707370431,
+        "images_with_label": 2070
+      },
+      "11": {
+        "pixels": 95051776,
+        "images_with_label": 273
+      }
+    },
+    "val": {
+      "0": {
+        "pixels": 58198269,
+        "images_with_label": 265
+      },
+      "1": {
+        "pixels": 2412178,
+        "images_with_label": 218
+      },
+      "2": {
+        "pixels": 52789,
+        "images_with_label": 50
+      },
+      "3": {
+        "pixels": 203894,
+        "images_with_label": 31
+      },
+      "4": {
+        "pixels": 401273,
+        "images_with_label": 140
+      },
+      "5": {
+        "pixels": 8814,
+        "images_with_label": 5
+      },
+      "6": {
+        "pixels": 101281,
+        "images_with_label": 13
+      },
+      "7": {
+        "pixels": 1088020,
+        "images_with_label": 160
+      },
+      "8": {
+        "pixels": 17804706,
+        "images_with_label": 158
+      },
+      "9": {
+        "pixels": 90735776,
+        "images_with_label": 256
+      },
+      "10": {
+        "pixels": 56280994,
+        "images_with_label": 224
+      },
+      "11": {
+        "pixels": 16936006,
+        "images_with_label": 115
+      }
+    },
+    "test": {
+      "0": {
+        "pixels": 140487503,
+        "images_with_label": 648
+      },
+      "1": {
+        "pixels": 1711924,
+        "images_with_label": 374
+      },
+      "2": {
+        "pixels": 65207,
+        "images_with_label": 173
+      },
+      "3": {
+        "pixels": 2831024,
+        "images_with_label": 243
+      },
+      "4": {
+        "pixels": 227071,
+        "images_with_label": 146
+      },
+      "5": {
+        "pixels": 104632,
+        "images_with_label": 17
+      },
+      "6": {
+        "pixels": 860379,
+        "images_with_label": 27
+      },
+      "7": {
+        "pixels": 2458848,
+        "images_with_label": 418
+      },
+      "8": {
+        "pixels": 42402415,
+        "images_with_label": 274
+      },
+      "9": {
+        "pixels": 262123162,
+        "images_with_label": 569
+      },
+      "10": {
+        "pixels": 118056921,
+        "images_with_label": 510
+      },
+      "11": {
+        "pixels": 25867714,
+        "images_with_label": 132
+      }
+    },
+    "all": {
+      "0": {
+        "pixels": 696388200,
+        "images_with_label": 3269
+      },
+      "1": {
+        "pixels": 12114423,
+        "images_with_label": 2597
+      },
+      "2": {
+        "pixels": 1596917,
+        "images_with_label": 1264
+      },
+      "3": {
+        "pixels": 11114500,
+        "images_with_label": 1005
+      },
+      "4": {
+        "pixels": 877424,
+        "images_with_label": 410
+      },
+      "5": {
+        "pixels": 653619,
+        "images_with_label": 66
+      },
+      "6": {
+        "pixels": 2524067,
+        "images_with_label": 100
+      },
+      "7": {
+        "pixels": 16946045,
+        "images_with_label": 2150
+      },
+      "8": {
+        "pixels": 133909912,
+        "images_with_label": 1729
+      },
+      "9": {
+        "pixels": 1117021451,
+        "images_with_label": 2983
+      },
+      "10": {
+        "pixels": 881708346,
+        "images_with_label": 2804
+      },
+      "11": {
+        "pixels": 137855496,
+        "images_with_label": 520
+      }
+    }
+  },
+  "depth_preview_audit": {
+    "modes": [
+      "RGB"
+    ],
+    "sizes": [
+      "504x280"
+    ],
+    "warning": "Existing DepthImages are previews saved as JPG. They are useful for visual checking, but raw Depth Anything outputs should be regenerated before final RGB-D training."
+  },
+  "preview_files": [
+    "REPLACE_WITH_LOCAL_OUTPUT_ROOT\\previews\\train_preview_sheet.png",
+    "REPLACE_WITH_LOCAL_OUTPUT_ROOT\\previews\\val_preview_sheet.png",
+    "REPLACE_WITH_LOCAL_OUTPUT_ROOT\\previews\\test_preview_sheet.png"
+  ]
+}

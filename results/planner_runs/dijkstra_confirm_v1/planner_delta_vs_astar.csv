@@ -1,0 +1,5 @@
+model,display_name,dijkstra_minus_astar_found,dijkstra_minus_astar_success,dijkstra_minus_astar_collision_found,dijkstra_minus_astar_safety,dijkstra_minus_astar_planning_ms
+oracle_gt,Oracle ground truth,0.0,0.0,0.0,0.0,8.330318702207915
+rgb_baseline,RGB-only baseline,0.0,-0.0019685039370078705,0.006211180124223614,-0.003937007874015741,2.804044881142588
+rgbd_concat_baseline,RGB-D concatenation,0.0,-0.0039370078740157965,0.008130081300812997,-0.007874015748031593,5.190111219256889
+semantic_clean,Semantic bottleneck,0.0,-0.007874015748031482,0.01834862385321101,-0.015748031496062964,4.559998227032195

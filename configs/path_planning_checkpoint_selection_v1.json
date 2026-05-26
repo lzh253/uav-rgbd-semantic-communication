@@ -1,0 +1,125 @@
+{
+  "run_name": "path_planning_checkpoint_selection_v1",
+  "description": "Path planning checkpoint-selection comparison between best_model and last_model checkpoints.",
+  "splits": ["val", "test"],
+  "image_size": 128,
+  "thresholds": [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75],
+  "selection_split": "val",
+  "final_split": "test",
+  "selection_metric": "success_rate_collision_free",
+  "safety_selection_metric": "planning_safety_utility",
+  "safety_selection_metric_definition": "success_rate_collision_free - (path_found_rate - success_rate_collision_free); rewards collision-free paths and penalizes found paths that collide.",
+  "selection_tie_breakers": ["path_found_rate", "mean_map_iou", "negative_collision_rate_among_found"],
+  "min_gt_component_pixels": 300,
+  "min_start_goal_distance": 32,
+  "connectivity": 8,
+  "max_samples_per_split": 0,
+  "seed": 20260518,
+  "outputs": {
+    "root": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/path_planning_runs",
+    "expanded_config": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/configs/path_planning_checkpoint_selection_v1_expanded.json",
+    "report": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/reports/path_planning_checkpoint_selection_v1_summary.md"
+  },
+  "checkpoint_tags": ["best", "last"],
+  "fixed_models": [
+    {
+      "name": "oracle_gt",
+      "type": "oracle",
+      "family": "oracle",
+      "role": "upper_bound",
+      "description": "A* on ground-truth traversability mask; upper-bound reference."
+    }
+  ],
+  "checkpoint_groups": [
+    {
+      "family": "rgb_baseline",
+      "display_name": "RGB baseline",
+      "role": "baseline",
+      "type": "baseline",
+      "mode": "rgb",
+      "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/baselines/strict_baselines_long_cuda_v1/rgb/checkpoints",
+      "pair_id": "rgb_baseline"
+    },
+    {
+      "family": "rgbd_concat_baseline",
+      "display_name": "RGB-D concat baseline",
+      "role": "baseline",
+      "type": "baseline",
+      "mode": "rgbd",
+      "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/baselines/strict_baselines_long_cuda_v1/rgbd/checkpoints",
+      "pair_id": "rgbd_concat_baseline"
+    },
+    {
+      "family": "semantic_clean_step4_single",
+      "display_name": "Step4 semantic clean",
+      "role": "single_main_reference",
+      "type": "semantic",
+      "variant": "clean",
+      "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_comm_v1/clean/checkpoints",
+      "pair_id": "semantic_clean_step4"
+    },
+    {
+      "family": "semantic_original_recipe",
+      "display_name": "Original semantic recipe",
+      "role": "multi_seed_recipe_reference",
+      "type": "semantic",
+      "variant": "clean",
+      "members": [
+        {
+          "seed": 20260516,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/multi_seed_reproducibility_v1_seed20260516/clean/checkpoints"
+        },
+        {
+          "seed": 20260517,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/multi_seed_reproducibility_v1_seed20260517/clean/checkpoints"
+        },
+        {
+          "seed": 20260518,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/multi_seed_reproducibility_v1_seed20260518/clean/checkpoints"
+        }
+      ]
+    },
+    {
+      "family": "semantic_stable_v1_lr1e4_clip10",
+      "display_name": "Stable v1 lr1e-4 clip1.0",
+      "role": "stable_recipe_v1",
+      "type": "semantic",
+      "variant": "clean",
+      "members": [
+        {
+          "seed": 20260516,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v1_seed20260516/clean/checkpoints"
+        },
+        {
+          "seed": 20260517,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v1_seed20260517/clean/checkpoints"
+        },
+        {
+          "seed": 20260518,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v1_seed20260518/clean/checkpoints"
+        }
+      ]
+    },
+    {
+      "family": "semantic_stable_v2_lr2e4_clip10",
+      "display_name": "Stable v2 lr2e-4 clip1.0",
+      "role": "stable_recipe_v2_locked",
+      "type": "semantic",
+      "variant": "clean",
+      "members": [
+        {
+          "seed": 20260516,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v2_lr2e4_clip10_seed20260516/clean/checkpoints"
+        },
+        {
+          "seed": 20260517,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v2_lr2e4_clip10_seed20260517/clean/checkpoints"
+        },
+        {
+          "seed": 20260518,
+          "base_checkpoint_dir": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v2_lr2e4_clip10_seed20260518/clean/checkpoints"
+        }
+      ]
+    }
+  ]
+}

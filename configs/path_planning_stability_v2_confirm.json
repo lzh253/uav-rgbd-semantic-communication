@@ -1,0 +1,147 @@
+{
+  "run_name": "path_planning_stability_v2_confirm",
+  "description": "Confirmatory validation-driven path planning threshold sweep for semantic clean stable recipe v2.",
+  "splits": ["val", "test"],
+  "image_size": 128,
+  "thresholds": [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75],
+  "selection_split": "val",
+  "final_split": "test",
+  "selection_metric": "success_rate_collision_free",
+  "safety_selection_metric": "planning_safety_utility",
+  "safety_selection_metric_definition": "success_rate_collision_free - (path_found_rate - success_rate_collision_free); rewards collision-free paths and penalizes found paths that collide.",
+  "selection_tie_breakers": ["path_found_rate", "mean_map_iou", "negative_collision_rate_among_found"],
+  "min_gt_component_pixels": 300,
+  "min_start_goal_distance": 32,
+  "connectivity": 8,
+  "max_samples_per_split": 0,
+  "seed": 20260518,
+  "outputs": {
+    "root": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/path_planning_runs"
+  },
+  "models": [
+    {
+      "name": "oracle_gt",
+      "type": "oracle",
+      "family": "oracle",
+      "role": "upper_bound",
+      "description": "A* on ground-truth traversability mask; upper-bound reference."
+    },
+    {
+      "name": "rgb_baseline",
+      "type": "baseline",
+      "mode": "rgb",
+      "family": "rgb_baseline",
+      "role": "baseline",
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/baselines/strict_baselines_long_cuda_v1/rgb/checkpoints/best_model.pth",
+      "description": "Strict RGB-only baseline from step 3."
+    },
+    {
+      "name": "rgbd_concat_baseline",
+      "type": "baseline",
+      "mode": "rgbd",
+      "family": "rgbd_concat_baseline",
+      "role": "baseline",
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/baselines/strict_baselines_long_cuda_v1/rgbd/checkpoints/best_model.pth",
+      "description": "Strict RGB-D concatenation baseline from step 3."
+    },
+    {
+      "name": "semantic_clean_step4",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_clean_step4_single",
+      "role": "single_main_reference",
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_comm_v1/clean/checkpoints/best_model.pth",
+      "description": "Original step 4 clean RGB-D semantic bottleneck main run."
+    },
+    {
+      "name": "semantic_original_seed20260516",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_original_recipe",
+      "role": "multi_seed_recipe_reference",
+      "seed": 20260516,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/multi_seed_reproducibility_v1_seed20260516/clean/checkpoints/best_model.pth",
+      "description": "Step 8 semantic clean original recipe seed 20260516."
+    },
+    {
+      "name": "semantic_original_seed20260517",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_original_recipe",
+      "role": "multi_seed_recipe_reference",
+      "seed": 20260517,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/multi_seed_reproducibility_v1_seed20260517/clean/checkpoints/best_model.pth",
+      "description": "Step 8 semantic clean original recipe seed 20260517."
+    },
+    {
+      "name": "semantic_original_seed20260518",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_original_recipe",
+      "role": "multi_seed_recipe_reference",
+      "seed": 20260518,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/multi_seed_reproducibility_v1_seed20260518/clean/checkpoints/best_model.pth",
+      "description": "Step 8 semantic clean original recipe seed 20260518."
+    },
+    {
+      "name": "semantic_stable_v1_seed20260516",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_stable_v1_lr1e4_clip10",
+      "role": "stable_recipe_v1",
+      "seed": 20260516,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v1_seed20260516/clean/checkpoints/best_model.pth",
+      "description": "Step 9 semantic clean stable v1 recipe seed 20260516."
+    },
+    {
+      "name": "semantic_stable_v1_seed20260517",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_stable_v1_lr1e4_clip10",
+      "role": "stable_recipe_v1",
+      "seed": 20260517,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v1_seed20260517/clean/checkpoints/best_model.pth",
+      "description": "Step 9 semantic clean stable v1 recipe seed 20260517."
+    },
+    {
+      "name": "semantic_stable_v1_seed20260518",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_stable_v1_lr1e4_clip10",
+      "role": "stable_recipe_v1",
+      "seed": 20260518,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v1_seed20260518/clean/checkpoints/best_model.pth",
+      "description": "Step 9 semantic clean stable v1 recipe seed 20260518."
+    },
+    {
+      "name": "semantic_stable_v2_clip10_seed20260516",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_stable_v2_lr2e4_clip10",
+      "role": "stable_recipe_v2_locked",
+      "seed": 20260516,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v2_lr2e4_clip10_seed20260516/clean/checkpoints/best_model.pth",
+      "description": "Step 10 locked stable v2 recipe lr=2e-4 clip=1.0 seed 20260516."
+    },
+    {
+      "name": "semantic_stable_v2_clip10_seed20260517",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_stable_v2_lr2e4_clip10",
+      "role": "stable_recipe_v2_locked",
+      "seed": 20260517,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v2_lr2e4_clip10_seed20260517/clean/checkpoints/best_model.pth",
+      "description": "Step 10 locked stable v2 recipe lr=2e-4 clip=1.0 seed 20260517."
+    },
+    {
+      "name": "semantic_stable_v2_clip10_seed20260518",
+      "type": "semantic",
+      "variant": "clean",
+      "family": "semantic_stable_v2_lr2e4_clip10",
+      "role": "stable_recipe_v2_locked",
+      "seed": 20260518,
+      "checkpoint": "REPLACE_WITH_LOCAL_OUTPUT_ROOT/semantic_comm_runs/semantic_stability_v2_lr2e4_clip10_seed20260518/clean/checkpoints/best_model.pth",
+      "description": "Step 10 locked stable v2 recipe lr=2e-4 clip=1.0 seed 20260518."
+    }
+  ]
+}

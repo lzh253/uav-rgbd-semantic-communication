@@ -1,0 +1,52 @@
+{
+  "splits": {
+    "train": {
+      "expected": 2356,
+      "existing": 2356,
+      "missing": 0,
+      "coverage": 1.0,
+      "shapes": [
+        "280x504"
+      ],
+      "dtypes": [
+        "float32"
+      ]
+    },
+    "val": {
+      "expected": 265,
+      "existing": 265,
+      "missing": 0,
+      "coverage": 1.0,
+      "shapes": [
+        "280x504"
+      ],
+      "dtypes": [
+        "float32"
+      ]
+    },
+    "test": {
+      "expected": 648,
+      "existing": 648,
+      "missing": 0,
+      "coverage": 1.0,
+      "shapes": [
+        "280x504"
+      ],
+      "dtypes": [
+        "float32"
+      ]
+    }
+  },
+  "overall": {
+    "expected": 3269,
+    "existing": 3269,
+    "missing": 0,
+    "coverage": 1.0,
+    "audit_csv": "REPLACE_WITH_LOCAL_OUTPUT_ROOT\\reports\\raw_depth_audit.csv"
+  },
+  "preview_files": [
+    "REPLACE_WITH_LOCAL_OUTPUT_ROOT\\previews\\raw_depth_train_preview_sheet.png",
+    "REPLACE_WITH_LOCAL_OUTPUT_ROOT\\previews\\raw_depth_val_preview_sheet.png",
+    "REPLACE_WITH_LOCAL_OUTPUT_ROOT\\previews\\raw_depth_test_preview_sheet.png"
+  ]
+}
