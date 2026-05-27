@@ -7,9 +7,12 @@ authors:
     orcid: "https://orcid.org/0009-0008-7899-1568"
   - family-names: Li
     given-names: Yao
+    orcid: "https://orcid.org/0009-0006-8126-034X"
   - family-names: Jia
     given-names: Yong
+    orcid: "https://orcid.org/0000-0003-3165-3349"
   - family-names: Lin
     given-names: Fanqiang
+    orcid: "https://orcid.org/0000-0003-4884-1944"
 repository-code: "https://github.com/lzh253/uav-rgbd-semantic-communication"
 date-released: "2026-05-25"
